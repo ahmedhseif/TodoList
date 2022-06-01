@@ -1,0 +1,21 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+
+{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Todo List{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <div class="container">
+  <h1 class="display-4">Todo List</h1>
+  <p class="lead">Manage your Todo list of today!</p>
+  <hr class="my-4">
+  <a class="btn btn-warning btn-lg" href="{{ url_for( 'lists' ) }}" role="button">Show Me!</a>
+</div>
+    </div>
+
+{% endblock %}

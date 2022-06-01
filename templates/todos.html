@@ -1,0 +1,57 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+
+{% block title %}All List{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>Today's List</h1>
+
+	  <table class="table">
+
+		<tr>
+			{% for head in header %}
+			<td>
+			{{ head }}
+			</td>
+			{% endfor %}
+
+
+		</tr>
+
+
+	  {% for row in todos %}
+
+	  <tr>
+		  	{% for item in row %}
+		  		{% if item == "name"%}
+					<td>{{ row[item] }}
+						<a href="{{url_for('delete_list', list_id=row['id'])  }}">✔</a>
+					</td>
+				{% else %}
+					<td>{{ row[item] }}</td>
+				{% endif %}
+
+			{% endfor %}
+
+	  </tr>
+	  {% endfor %}
+  	  </table>
+		<p><a href="{{ url_for('add_list') }}">Add a new work</a></p>
+      <p><a href="{{ url_for('home') }}">Return to index page</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
